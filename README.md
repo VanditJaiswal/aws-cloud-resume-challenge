@@ -55,9 +55,7 @@ ACM provides the SSL/TLS certificate used by CloudFront.
 
 ## Serverless Visitor Counter
 
-The visitor counter follows:
-
-<img width="1061" height="637" alt="image" src="https://github.com/user-attachments/assets/885ed292-79b5-4f78-b256-ec2fb5d63ce1" />
+<img width="1057" height="627" alt="image" src="https://github.com/user-attachments/assets/c5f59a60-0c95-4b1e-913b-728347bd9d0e" />
 
 The Lambda function performs an atomic DynamoDB `UpdateItem` operation to increment the counter.
 
