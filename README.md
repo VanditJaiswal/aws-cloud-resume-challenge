@@ -11,8 +11,7 @@ A cloud-hosted personal portfolio website built as an AWS Cloud Resume Challenge
 
 ## Architecture
 
-<img width="1083" height="1081" alt="image" src="https://github.com/user-attachments/assets/5e2ec971-5bb7-4c37-8abe-384c551e7716" />
-
+<img width="1621" height="1078" alt="image" src="https://github.com/user-attachments/assets/35b29ade-7538-4cef-a58a-00296ff225f9" />
 
 ## Frontend
 
@@ -135,15 +134,16 @@ jobs:
 
       - name: Upload website to S3
         run: |
-          aws s3 sync ./website s3://${{ secrets.AWS_S3_BUCKET }}             --delete
+          aws s3 sync ./website s3://${{ secrets.AWS_S3_BUCKET }} --delete
 
       - name: Invalidate CloudFront cache
         run: |
-          aws cloudfront create-invalidation             --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}             --paths "/*"
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
 ```
 
-<img width="1620" height="1074" alt="image" src="https://github.com/user-attachments/assets/dfc71b28-c874-4c0d-990d-da84c5a600c1" />
-
+<img width="935" height="1073" alt="image" src="https://github.com/user-attachments/assets/600a33fb-1158-4e28-a90b-42b0e437f58c" />
 
 ## Technologies
 
