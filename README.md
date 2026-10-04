@@ -169,14 +169,6 @@ jobs:
 - Automated CI/CD with GitHub Actions
 - S3 synchronization and CloudFront invalidation
 
-## Project Status
-
-- **Frontend CI/CD:** Complete
-- **AWS Hosting:** Complete
-- **Custom Domain + HTTPS:** Complete
-- **Serverless Visitor Counter:** Complete
-- **GitHub OIDC Authentication:** Complete
-
 ## Author
 
 **Vandit Jaiswal**
