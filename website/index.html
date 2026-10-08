@@ -84,6 +84,20 @@ footer{text-align:center;padding:50px;color:#9fb4c9}
   background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.08);
 }
+.counter-info{
+  margin:8px auto 0;
+  max-width:700px;
+  text-align:center;
+  color:#8fa8bd;
+  font-size:.78rem;
+  line-height:1.6;
+  opacity:.75;
+}
+
+.counter-info strong{
+  color:#6ee7ff;
+  font-weight:600;
+}
 
 
 /* Mobile responsiveness */
@@ -417,6 +431,12 @@ It explores decentralized storage, secure sharing and trusted healthcare data ma
 
 <div class="view-counter" aria-label="Portfolio view count">
   <span id="counter-number">Views: —</span>
+
+  <div class="counter-info">
+    <strong>⚡ Serverless visitor counter</strong><br>
+    Your visit triggers a Lambda function through its Function URL,
+    which atomically increments the count in DynamoDB and returns the updated value.
+  </div>
 </div>
 
 <footer>Made by Vandit Jaiswal • Hosted on Amazon S3 + CloudFront</footer>
