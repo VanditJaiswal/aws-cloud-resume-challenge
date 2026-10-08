@@ -67,7 +67,19 @@ footer{text-align:center;padding:50px;color:#9fb4c9}
   transform:translateY(-2px);
   opacity:1;
 }
-.avatar{overflow:hidden;padding:0;border:2px solid rgba(110,231,255,.45);background:#14263c}.avatar img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center}
+.avatar{
+  overflow:hidden;
+  padding:0;
+  border:2px solid rgba(110,231,255,.45);
+  background:#14263c
+}
+.avatar img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center
+}
 
 .view-counter{
   text-align:center;
@@ -228,8 +240,8 @@ img {
   }
 
   .view-counter {
-    margin-top: -5px;
-    padding: 0 6% 18px;
+    text-align: center;
+    padding: 15px 6% 35px;
   }
 
   footer {
@@ -240,6 +252,21 @@ img {
 }
 
 @media (max-width: 480px) {
+
+  .counter-card {
+    padding: 18px 20px;
+  }
+
+  .counter-number {
+    font-size: 1.7rem;
+  }
+
+  .counter-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.3rem;
+  }
+
   nav {
     padding: 14px 5%;
   }
@@ -303,7 +330,6 @@ img {
     padding: 7px 11px;
   }
 }
-
 </style>
 </head>
 <body>
@@ -429,13 +455,19 @@ It explores decentralized storage, secure sharing and trusted healthcare data ma
 </div>
 </section>
 
-<div class="view-counter" aria-label="Portfolio view count">
-  <span id="counter-number">Views: —</span>
+<div class="view-counter" aria-label="Portfolio visitor count">
+  <div class="counter-card">
+    <div class="counter-icon">⚡</div>
 
-  <div class="counter-info">
-    <strong>⚡ Serverless visitor counter</strong><br>
-    Your visit triggers a Lambda function through its Function URL,
-    which atomically increments the count in DynamoDB and returns the updated value.
+    <div class="counter-content">
+      <div class="counter-label">YOU'RE VISITOR</div>
+      <div id="counter-number" class="counter-number">#—</div>
+      <div class="counter-thanks">Thanks for stopping by!</div>
+    </div>
+  </div>
+
+  <div class="counter-tech">
+    Powered by <strong>AWS Lambda</strong> + <strong>DynamoDB</strong>
   </div>
 </div>
 
@@ -445,22 +477,58 @@ It explores decentralized storage, secure sharing and trusted healthcare data ma
 const words=["AWS Certified Solutions Architect","Cloud Engineer","Kubernetes & DevOps","IEEE Published Researcher"];
 let i=0,j=0,del=false;
 const el=document.getElementById("typing");
+
 setInterval(()=>{
-let w=words[i];
-el.textContent=w.substring(0,j);
-if(!del){j++;if(j>w.length){del=true;setTimeout(()=>{},700)}}
-else{j--;if(j==0){del=false;i=(i+1)%words.length}}
+  let w=words[i];
+  el.textContent=w.substring(0,j);
+
+  if(!del){
+    j++;
+    if(j>w.length){
+      del=true;
+      setTimeout(()=>{},700);
+    }
+  } else {
+    j--;
+    if(j==0){
+      del=false;
+      i=(i+1)%words.length;
+    }
+  }
 },120);
 
 const c=document.getElementById("bg"),ctx=c.getContext("2d");
-function resize(){c.width=innerWidth;c.height=innerHeight}resize();onresize=resize;
-const pts=[...Array(80)].map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+1,v:Math.random()*0.6+0.2}));
-function draw(){
-ctx.clearRect(0,0,c.width,c.height);
-ctx.fillStyle="rgba(120,220,255,.8)";
-pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fill();p.y+=p.v;if(p.y>c.height)p.y=0;});
-requestAnimationFrame(draw);
+
+function resize(){
+  c.width=innerWidth;
+  c.height=innerHeight;
 }
+
+resize();
+onresize=resize;
+
+const pts=[...Array(80)].map(()=>({
+  x:Math.random()*c.width,
+  y:Math.random()*c.height,
+  r:Math.random()*2+1,
+  v:Math.random()*0.6+0.2
+}));
+
+function draw(){
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.fillStyle="rgba(120,220,255,.8)";
+
+  pts.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,6.28);
+    ctx.fill();
+    p.y+=p.v;
+    if(p.y>c.height)p.y=0;
+  });
+
+  requestAnimationFrame(draw);
+}
+
 draw();
 
 
@@ -474,15 +542,14 @@ async function updateCounter() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const data = await response.json();
-    counter.textContent = `Views: ${data.views}`;
+    counter.textContent = `#${data.views}`;
   } catch (error) {
     console.error("View counter error:", error);
-    counter.textContent = "Views: —";
+    counter.textContent = "#—";
   }
 }
 
 updateCounter();
-
 </script>
 </body>
 </html>
