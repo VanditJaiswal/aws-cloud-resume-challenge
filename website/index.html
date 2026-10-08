@@ -789,7 +789,7 @@ async function updateCounter() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const data = await response.json();
-    counter.textContent = `#${data.views}`;
+    counter.textContent = data.views;
   } catch (error) {
     console.error("View counter error:", error);
     counter.textContent = "#—";
