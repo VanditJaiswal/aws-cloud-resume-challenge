@@ -21,9 +21,7 @@ The responsive portfolio includes a professional profile, AWS certification, tec
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-![Uploading image.png…]()
-
-
+<img width="2559" height="1344" alt="image" src="https://github.com/user-attachments/assets/40d19b67-87fd-45be-8334-ab2698fe6a6c" />
 
 ## AWS Infrastructure
 
